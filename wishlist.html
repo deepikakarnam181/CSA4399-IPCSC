@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://www.buildofy.com/blog/content/images/2022/06/DSC9610-Edited-min.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .wishlist-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .wishlist-table th, .wishlist-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .wishlist-table th {
+            background-color: #f4f4f4;
+        }
+
+        .property-image {
+            width: 100px;
+            height: auto;
+        }
+
+        .btn-container {
+            text-align: center;
+        }
+
+        .btn-container button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        .btn-container button:hover {
+            background-color: #45a049;
+        }
+
+        .btn-container a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 10px;
+        }
+
+        .btn-container a:hover {
+            background-color: #0056b3;
+        }
+
+        .add-button {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-size: 24px;
+            cursor: pointer;
+            margin: 10px;
+            border: none;
+        }
+
+        .add-button:hover {
+            background-color: #0056b3;
+        }
+
+        .empty-message {
+            text-align: center;
+            color: #777;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>My Wishlist</h1>
+
+    <table class="wishlist-table">
+        <thead>
+            <tr>
+                <th>Property Image</th>
+                <th>Property Name</th>
+                <th>Location</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="wishlist-body">
+            <tr>
+                <td><img src="ip4.jpg" alt="Property 1" class="property-image"></td>
+                <td>Beautiful Family House</td>
+                <td>1234 Main St, Cityville</td>
+                <td>$500,000</td>
+                <td>
+                    <button onclick="removeItem(this)">Remove</button>
+                    <a href="viewapp.html" target="_blank">View Details</a>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="app2.jpg" alt="Property 2" class="property-image"></td>
+                <td>Modern Apartment</td>
+                <td>5678 Downtown, Cityville</td>
+                <td>$300,000</td>
+                <td>
+                    <button onclick="removeItem(this)">Remove</button>
+                    <a href="viewapp.html" target="_blank">View Details</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="empty-message" id="empty-message" style="display: none;">Your wishlist is empty.</div>
+
+    <div class="btn-container">
+        <button onclick="proceedToCheckout()">Proceed to Checkout</button>
+        <a href="6home.html">Back to Home</a>
+        <button class="add-button" onclick="addItem()">+</button> <!-- Add button with + symbol -->
+    </div>
+</div>
+
+<script>
+    function removeItem(button) {
+        // Remove the selected property from the wishlist
+        const row = button.parentElement.parentElement;
+        row.remove();
+
+        // Check if the wishlist is empty
+        const wishlistBody = document.getElementById('wishlist-body');
+        if (wishlistBody.rows.length === 0) {
+            document.getElementById('empty-message').style.display = 'block';
+        }
+    }
+
+    function proceedToCheckout() {
+        alert('Proceeding to checkout with your saved properties.');
+        // Logic to redirect to checkout page
+    }
+
+    function addItem() {
+        alert('Adding a new item to your wishlist.');
+        // Logic to add a new property to the wishlist
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location Finder</title>
+    <link rel="stylesheet" href="map.css"> <!-- Link to external CSS file -->
+</head>
+<body>
+    <div class="location-container">
+        <h1>Find Your Location</h1>
+        <p>Enter the location you want to navigate to:</p>
+        <form id="location-form">
+            <input type="text" id="location-input" placeholder="Enter a city or address">
+            <button type="submit">Go</button>
+        </form>
+        <iframe id="map" src="https://www.google.com/maps" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <script>
+        const form = document.getElementById('location-form');
+        const locationInput = document.getElementById('location-input');
+        const map = document.getElementById('map');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const location = locationInput.value;
+            const googleMapURL = https://www.google.com/maps?q=${encodeURIComponent(location)}&output=embed;
+            map.src = googleMapURL;
+        });
+    </script>
+</body>
+</html>

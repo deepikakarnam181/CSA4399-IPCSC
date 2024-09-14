@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Location on Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .search-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .search-container input {
+            padding: 10px;
+            font-size: 16px;
+            width: 80%;
+            max-width: 400px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .search-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .search-container button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Search Location on Map</h1>
+    </header>
+
+    <main>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Enter a location">
+            <button id="search-button">Search</button>
+        </div>
+        <div id="map"></div>
+    </main>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <script>
+        // Initialize the map and set its view to a default location
+        var map = L.map('map').setView([20.5937, 78.9629], 5); // Default location: India
+
+        // Add a tile layer to the map
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Create a geocoder
+        var geocoder = L.Control.Geocoder.nominatim();
+
+        // Add event listener for the search button
+        document.getElementById('search-button').addEventListener('click', function() {
+            var query = document.getElementById('search-input').value;
+            if (query) {
+                geocoder.geocode(query, function(results) {
+                    if (results.length > 0) {
+                        var result = results[0];
+                        var address = result.name;
+                        var details = result.properties || {}; // Address details
+
+                        var doorNumber = details.house_number || 'N/A';
+                        var street = details.street || 'N/A';
+                        var area = details.suburb || 'N/A'; // Use suburb or neighborhood as area
+                        var city = details.city || 'N/A';
+                        var state = details.state || 'N/A';
+                        var postcode = details.postcode || 'N/A';
+
+                        map.setView(result.center, 13); // Set the map view to the searched location
+                        L.marker(result.center).addTo(map)
+                            .bindPopup(`
+                                <b>${address}</b><br>
+                                Door Number: ${doorNumber}<br>
+                                Street: ${street}<br>
+                                Area: ${area}<br>
+                                City: ${city}<br>
+                                State: ${state}<br>
+                                Postcode: ${postcode}
+                            `)
+                            .openPopup();
+                    } else {
+                        alert('Location not found. Please try again.');
+                    }
+                });
+            } else {
+                alert('Please enter a location.');
+            }
+        });
+    </script>
+</body>
+</html>

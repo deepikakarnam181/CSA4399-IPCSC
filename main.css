@@ -1,0 +1,141 @@
+/* Add a background image with blur to the entire page */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('homeback.jpg'); /* Replace with your actual image path */
+    background-size: cover; /* Ensure the image covers the whole page */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-attachment: fixed; /* Fix the image to the viewport */
+    margin: 0;
+    padding: 0;
+    color: #333;
+    position: relative;
+}
+
+/* Optional: Adjust the blur level and opacity of the overlay to ensure background image is visible */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px); /* Adjust blur level here */
+    background-color: rgba(255, 255, 255, 0.2); /* Optional: add a slight overlay to enhance text readability */
+    z-index: -1;
+}
+
+/* Header styling */
+.header {
+    background-color: rgba(0, 0, 0, 0.7); /* Add slight transparency for readability */
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.logo {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* Main content styling */
+.main-content {
+    padding: 40px 0;
+    background-color: rgba(255, 255, 255, 0.8); /* Adjusted to be more opaque */
+    border-radius: 10px;
+    backdrop-filter: blur(5px); /* Optional: apply a smaller blur if needed */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Exclusive Homes Section */
+.exclusive-homes h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.exclusive-listings {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.listing {
+    width: 30%;
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly more opaque background */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.listing:hover {
+    transform: scale(1.05);
+}
+
+.listing img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.listing h3 {
+    margin: 15px 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.listing a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.listing a:hover {
+    background-color: #0056b3;
+}
+
+/* Footer Styling */
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-nav a {
+    color: #fff;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+.footer-nav a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+    .exclusive-listings {
+        flex-wrap: wrap;
+    }
+
+    .listing {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+}

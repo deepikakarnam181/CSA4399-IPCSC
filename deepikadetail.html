@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Apartment Details</title>
+    <link rel="stylesheet" href="deepikadatail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Style for the buttons */
+        .back-button, .wishlist-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .back-button {
+            background-color: #03a9f4;
+            color: white;
+            border: none;
+            margin-right: 10px;
+        }
+
+        .wishlist-button {
+            background-color: transparent;
+            color: red;
+            font-size: 24px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .wishlist-button i {
+            color: gray;
+        }
+
+        .wishlist-button.active i {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Apartment Details</h1>
+    </header>
+
+    <section class="apartment-container">
+        <div class="apartment-image">
+            <img src="deepikadet.jpg" alt="Apartment Image">
+        </div>
+        
+        <div class="apartment-info">
+            <h2>Luxury 3-Bedroom Apartment</h2>
+            <p><strong>Location:</strong> Los Angeles, CA</p>
+            <p><strong>Price:</strong> $3,800 per month</p>
+            <p><strong>Size:</strong> 1,800 sq ft</p>
+            <p><strong>Description:</strong> This luxury apartment offers top-notch amenities, a modern kitchen with stainless steel appliances, large bedrooms, and a rooftop lounge with panoramic views of the city.</p>
+            
+            <h3>Features</h3>
+            <ul>
+                <li>3 Bedrooms</li>
+                <li>2.5 Bathrooms</li>
+                <li>Private Rooftop Access</li>
+                <li>Smart Home Technology</li>
+                <li>Concierge Service</li>
+                <li>Swimming Pool</li>
+            </ul>
+
+            <!-- Wishlist button (heart icon) -->
+            <button class="wishlist-button" id="wishlist-btn" title="Add to Wishlist">
+                <i class="fas fa-heart"></i>
+            </button>
+
+            <!-- Back Button -->
+            <button class="back-button" onclick="goBack()">Back</button>
+
+            <!-- Link to deepika Owner page -->
+            <a href="view imagr.html" class="owner-link">View some images</a>
+        </div>
+    </section>
+
+    <script>
+        // Function to go back to the previous page
+        function goBack() {
+            window.history.back();
+        }
+
+        // Wishlist button functionality
+        const wishlistButton = document.getElementById('wishlist-btn');
+        const apartmentDetails = {
+            name: 'Luxury 3-Bedroom Apartment',
+            location: 'Los Angeles, CA',
+            price: '$3,800 per month',
+            image: 'deepikadet.jpg'
+        };
+
+        wishlistButton.addEventListener('click', function() {
+            this.classList.toggle('active'); // Toggle heart color
+            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+            if (this.classList.contains('active')) {
+                // Add to wishlist
+                wishlist.push(apartmentDetails);
+                alert('Added to wishlist!');
+            } else {
+                // Remove from wishlist
+                wishlist = wishlist.filter(item => item.name !== apartmentDetails.name);
+                alert('Removed from wishlist!');
+            }
+
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
+        });
+    </script>
+</body>
+</html>
