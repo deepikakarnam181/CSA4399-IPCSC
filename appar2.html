@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apartment Preferences</title>
+    <link rel="stylesheet" href="appart.css">
+</head>
+<body>
+
+    <div class="container">
+        <header class="header">
+            <h1>Apartment Preferences</h1>
+        </header>
+
+        <div class="main-content">
+            <section class="apartment-features">
+                <h2>Set Your Preferences</h2>
+
+                <!-- Number of Bedrooms -->
+                <div class="preference-group">
+                    <label for="bedrooms">Number of Bedrooms:</label>
+                    <input type="range" id="bedrooms" name="bedrooms" min="1" max="5" value="2" oninput="updateBedroomsValue(this.value)">
+                    <span id="bedrooms-value">2</span> Bedrooms
+                </div>
+
+                <!-- Number of Washrooms -->
+                <div class="preference-group">
+                    <label for="washrooms">Number of Washrooms:</label>
+                    <input type="range" id="washrooms" name="washrooms" min="1" max="4" value="1" oninput="updateWashroomsValue(this.value)">
+                    <span id="washrooms-value">1</span> Washroom
+                </div>
+
+                <!-- Facing Direction -->
+                <div class="preference-group">
+                    <label for="facing">Facing Direction:</label>
+                    <select id="facing" name="facing">
+                        <option value="north">North</option>
+                        <option value="south">South</option>
+                        <option value="east">East</option>
+                        <option value="west">West</option>
+                        <option value="north-east">North-East</option>
+                        <option value="north-west">North-West</option>
+                        <option value="south-east">South-East</option>
+                        <option value="south-west">South-West</option>
+                    </select>
+                </div>
+
+                <!-- Furnishing Options -->
+                <div class="preference-group">
+                    <label for="furnishing">Furnishing Options:</label>
+                    <select id="furnishing" name="furnishing">
+                        <option value="furnished">Furnished</option>
+                        <option value="semi-furnished">Semi-Furnished</option>
+                        <option value="not-furnished">Not Furnished</option>
+                    </select>
+                </div>
+
+                <!-- Additional Features -->
+                <div class="preference-group">
+                    <h3>Room Features:</h3>
+                    <label><input type="checkbox" name="balcony"> Balcony</label>
+                    <label><input type="checkbox" name="modular-kitchen"> Modular Kitchen</label>
+                    <label><input type="checkbox" name="air-conditioning"> Air Conditioning</label>
+                    <label><input type="checkbox" name="wifi"> High-Speed Wi-Fi</label>
+                    <label><input type="checkbox" name="parking"> Parking Facility</label>
+                </div>
+
+                <!-- Submit button -->
+                <button class="submit-button" onclick="location.href='approoms.html'">Submit Preferences</button>
+
+                <!-- Back button -->
+                <button class="back-button" onclick="history.back()">Go Back</button>
+
+            </section>
+        </div>
+
+        <footer class="footer">
+            <p>&copy; 2024 Apartment Listings. All rights reserved.</p>
+            <nav class="footer-nav">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+            </nav>
+        </footer>
+    </div>
+
+    <script>
+        function updateBedroomsValue(value) {
+            document.getElementById('bedrooms-value').innerText = value;
+        }
+
+        function updateWashroomsValue(value) {
+            document.getElementById('washrooms-value').innerText = value;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Dream Property</title>
+    <link rel="stylesheet" href="approom.css"> <!-- Link to external CSS file -->
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">Select Your Dream Property</h1>
+        </div>
+    </header>
+    
+    <!-- Back button section -->
+    <section class="back-btn-section">
+        <div class="container">
+            <button onclick="goBack()" class="back-btn">← Back</button>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <div class="image-grid">
+            <div class="image-item">
+                <a href="deepikadetail.html">
+                    <img src="app1.jpeg" alt="Modern Apartment">
+                    <div class="overlay">Deepika's Apartments</div>
+                </a>
+            </div>
+            <div class="image-item">
+                <a href="depikadetail.html">
+                    <img src="app3.jpeg" alt="Cozy Cottage">
+                    <div class="overlay">pavani Apartment</div>
+                </a>
+            </div>
+            <div class="image-item">
+                <a href="saidetail.html">
+                    <img src="app5.jpeg" alt="Spacious Family Home">
+                    <div class="overlay">Sai Apartment</div>
+                </a>
+            </div>
+            <div class="image-item">
+                <a href="sreedetail.html">
+                    <img src="app4.jpeg" alt="Luxury Condo">
+                    <div class="overlay">Sree Apartment</div>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 House Hunting. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Back Button -->
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

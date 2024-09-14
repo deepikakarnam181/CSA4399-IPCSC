@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password</title>
+    <link rel="stylesheet" href="4repassw.css">
+</head>
+<body>
+    <div class="reset-container">
+        <h2>Reset Password</h2>
+        <form id="resetForm"> <!-- Removed action to handle via JavaScript -->
+            <div class="input-group">
+                <label for="email-phone">Email or Phone Number</label>
+                <input type="text" id="email-phone" placeholder="Enter your email or phone number" required>
+            </div>
+
+            <div class="input-group otp-group">
+                <button type="button" class="otp-btn">Send OTP</button>
+            </div>
+
+            <div class="input-group">
+                <label for="otp">Enter OTP</label>
+                <input type="text" id="otp" placeholder="Enter the OTP sent to your email/phone" required>
+            </div>
+
+            <div class="input-group">
+                <label for="new-password">New Password</label>
+                <input type="password" id="new-password" placeholder="Enter your new password" required>
+                <span class="view-password" onclick="togglePassword('new-password', this)">👁</span>
+            </div>
+
+            <div class="input-group">
+                <label for="reenter-password">Re-enter Password</label>
+                <input type="password" id="reenter-password" placeholder="Re-enter your new password" required>
+                <span class="view-password" onclick="togglePassword('reenter-password', this)">👁</span>
+            </div>
+
+            <div class="input-group">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Function to toggle password visibility
+        function togglePassword(id, eyeIcon) {
+            const passwordField = document.getElementById(id);
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                eyeIcon.textContent = "🙈"; // Change eye symbol to indicate "hide"
+            } else {
+                passwordField.type = "password";
+                eyeIcon.textContent = "👁"; // Change eye symbol to indicate "show"
+            }
+        }
+
+        // Form validation and submission handling
+        document.getElementById("resetForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form from actually submitting
+
+            const emailPhone = document.getElementById('email-phone').value;
+            const newPassword = document.getElementById('new-password').value;
+            const reenterPassword = document.getElementById('reenter-password').value;
+
+            // Email and phone validation
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+            const phonePattern = /^[0-9]{10}$/;
+
+            if (!emailPattern.test(emailPhone) && !phonePattern.test(emailPhone)) {
+                alert("Enter a valid email (must end with @gmail.com) or phone number (10 digits).");
+                return false;
+            }
+
+            // Password validation (at least one special character)
+            const specialCharPattern = /[!@#$%^&*(),.?":{}|<>]/;
+            if (!specialCharPattern.test(newPassword)) {
+                alert("Password must contain at least one special character.");
+                return false;
+            }
+
+            // Check if passwords match
+            if (newPassword !== reenterPassword) {
+                alert("Passwords do not match!");
+                return false;
+            }
+
+            // Show success popup and redirect
+            alert("Password reset successfully!");
+            window.location.href = "5loca.html"; // Redirect to success.html page
+        });
+    </script>
+</body>
+</html>

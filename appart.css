@@ -1,0 +1,103 @@
+/* Basic styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('app.jpeg'); /* Replace with your actual image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #333;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.5em;
+    border-radius: 5px;
+}
+
+.main-content {
+    padding: 20px;
+}
+
+.apartment-features h2 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.preference-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.preference-group label {
+    display: block;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.preference-group input[type="range"] {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.preference-group select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+.footer {
+    margin-top: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+.footer-nav a {
+    color: #fff;
+    margin: 0 5px;
+    text-decoration: none;
+}
+
+.footer-nav a:hover {
+    text-decoration: underline;
+}

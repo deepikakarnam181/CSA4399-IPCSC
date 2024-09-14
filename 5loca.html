@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location Selection</title>
+    <link rel="stylesheet" href="location-style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .location-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .input-group select,
+        .input-group input,
+        .input-group textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        .input-group select:focus,
+        .input-group input:focus,
+        .input-group textarea:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        .input-group button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .input-group button:hover {
+            background-color: #45a049;
+        }
+
+        .success-message {
+            text-align: center;
+            font-size: 18px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="location-container">
+        <h2>Select Your Location</h2>
+        <form id="locationForm">
+            <div class="input-group">
+                <label for="state">State (India)</label>
+                <select id="state" required>
+                    <option value="" disabled selected>Select your state</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Assam">Assam</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="West Bengal">West Bengal</option>
+                    <!-- Add more states as needed -->
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="city">City</label>
+                <input type="text" id="city" placeholder="Enter your city" required>
+            </div>
+
+            <div class="input-group">
+                <label for="nearby">Nearby You Needed</label>
+                <select id="nearby" required>
+                    <option value="" disabled selected>Select nearby services</option>
+                    <option value="Hospital">Hospital</option>
+                    <option value="School">School</option>
+                    <option value="Grocery Store">Grocery Store</option>
+                    <option value="Police Station">Police Station</option>
+                    <option value="Pharmacy">Pharmacy</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+
+            <!-- Additional field (optional) -->
+            <div class="input-group">
+                <label for="additional-info">Additional Information (Optional)</label>
+                <textarea id="additional-info" placeholder="You can leave this blank" rows="3"></textarea>
+            </div>
+
+            <div class="input-group">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+        <div class="success-message" id="successMessage"></div>
+    </div>
+
+    <script>
+        document.getElementById("locationForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form from refreshing the page
+            const state = document.getElementById("state").value;
+            const city = document.getElementById("city").value;
+            const nearby = document.getElementById("nearby").value;
+            const additionalInfo = document.getElementById("additional-info").value;
+
+            let successMessage = `You have selected: State - ${state}, City - ${city}, Nearby - ${nearby}`;
+            if (additionalInfo) {
+                successMessage += `, Additional Info: ${additionalInfo}`;
+            }
+
+            document.getElementById("successMessage").textContent = successMessage;
+
+            // Redirect to another page after showing success message (2 seconds delay)
+            setTimeout(function() {
+                window.location.href = "6home.html"; // Replace with the actual URL of your next page
+            }, 2000);
+        });
+    </script>
+
+</body>
+</html>
